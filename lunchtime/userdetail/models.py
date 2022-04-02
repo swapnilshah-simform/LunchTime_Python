@@ -15,8 +15,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(f"{self.profile_id} {self.user.username}")
-
-
-
-
-    
