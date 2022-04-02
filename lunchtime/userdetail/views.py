@@ -40,11 +40,11 @@ def loginUserPage(request):
     try:
         user = User.objects.get(email=email)
         if user.check_password(password):
-            return Response(user.profile.profile_id)
+            return Response(status=status.HTTP_200_OK)
         else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_404_NOT_FOUND)
     except BaseException as e:
-        return Response(status=status.HTTP_400_BAD_REQUEST)
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(['POST'])
@@ -56,3 +56,5 @@ def createProfile(request):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors)
+
+
