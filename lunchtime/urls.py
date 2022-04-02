@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+# from userdetail.views import RegisterView, ReviewsView, MenuView
 from userdetail.views import RegisterView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include('userdetail.urls'))
+    path('api/',include('userdetail.urls')),
+    path('api/',include('reviews.urls')),
+    path('api/',include('canteenInfo.urls')),
+    # path('api/', include('menu.urls')),
 ]
