@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
-from lunchtime.menu.models import Menu
+from menu.models import Menu
 
 
 class Reviews(models.Model):
