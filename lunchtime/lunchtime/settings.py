@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'userdetail',
     'canteenInfo',
     'rest_framework',
-    'knox',
 ]
 
 
@@ -57,13 +56,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework.authentication.BasicAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        'knox.auth.TokenAuthentication',
-    ]
-}
 ROOT_URLCONF = 'lunchtime.urls'
 
 TEMPLATES = [

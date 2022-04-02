@@ -22,5 +22,5 @@ urlpatterns = [
     path('api/',include('userdetail.urls')),
     path('api/',include('reviews.urls')),
     path('api/',include('canteenInfo.urls')),
-    # path('api/', include('menu.urls')),
+    path('apimenu/', include('menu.urls')),
 ]
