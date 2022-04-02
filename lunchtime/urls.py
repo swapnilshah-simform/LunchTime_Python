@@ -20,6 +20,7 @@ from userdetail.views import RegisterView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('userdetail.urls')),
-    # path('api/',include('reviews.urls')),
+    path('api/',include('reviews.urls')),
+    path('api/',include('canteenInfo.urls')),
     # path('api/', include('menu.urls')),
 ]

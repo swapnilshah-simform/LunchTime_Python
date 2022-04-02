@@ -6,6 +6,7 @@ from .serializer import ReviewsSerializer
 from rest_framework.viewsets import ModelViewSet
 
 
+
 class ReviewView(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = ReviewsSerializer

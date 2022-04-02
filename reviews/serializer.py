@@ -3,8 +3,8 @@ from .models import Reviews
 
 class ReviewsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = reviews
-        field = '__all__'
+        model = Reviews
+        fields = '__all__'
 
 
     
