@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.response import Response
@@ -9,8 +9,6 @@ from rest_framework.views import APIView
 from canteenInfo.models import CanteenInfo
 
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer
-from rest_framework import generics
-from django.contrib.auth import login
 
 
 # class RegisterView(generics.CreateAPIView):
@@ -63,4 +61,17 @@ def createProfile(request):
         return Response(serializer.data)
     return Response(serializer.errors)
 
+
+@api_view(['POST'])
+def password_reset(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        print(email)
+        user = User.objects.get(email=email)
+        print(user)
+        if user is not None:
+            return Response(status.HTTP_200_OK)
+        else:
+            print("error")
+    return "test"
 

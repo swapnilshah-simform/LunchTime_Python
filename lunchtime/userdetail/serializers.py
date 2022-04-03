@@ -1,5 +1,3 @@
-from pyexpat import model
-
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Profile
@@ -8,7 +6,7 @@ from .models import Profile
 class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','username','email','password']
+        fields = ['id', 'username', 'email', 'password']
 
     def validate_email(self, email):
         if not email.endswith("@simformsolutions.com"):
