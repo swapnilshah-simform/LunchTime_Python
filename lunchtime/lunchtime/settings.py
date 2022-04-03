@@ -95,7 +95,7 @@ DATABASES = {
 
         'PASSWORD': env('DATABASE_PASS'),
 
-        'HOST': 'ec2-52-21-136-176.compute-1.amazonaws.com',
+        'HOST': 'lunchtime.chef9tzlxflr.us-east-1.rds.amazonaws.com',
 
         'PORT': '5432',
 
