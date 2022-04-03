@@ -25,14 +25,21 @@ def UpdateCounter(request, pk):
 
 
 @api_view(["GET"])
-def UpdateCounter(request, pk):
+def GetCounter(request, pk):
     pro = Profile.objects.get(profile_id=pk)
-    course = CanteenInfo.objects.filter(profile_id=pro).first()
+    course = CanteenInfo.objects.filter(active_or_not=True).count()
     print(course)
-    course.active_or_not = True
-    print("Active True")
-    serializer = CanteenInfoSerializer(course, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
-    return Response(serializer.errors)
+    return Response(course)
+
+# @api_view(["GET"])
+# def UpdateCounter(request, pk):
+#     pro = Profile.objects.get(profile_id=pk)
+#     course = CanteenInfo.objects.filter(profile_id=pro).first()
+#     print(course)
+#     course.active_or_not = True
+#     print("Active True")
+#     serializer = CanteenInfoSerializer(course, data=request.data)
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+#     return Response(serializer.errors)

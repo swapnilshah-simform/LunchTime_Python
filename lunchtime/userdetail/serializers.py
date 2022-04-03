@@ -25,4 +25,4 @@ class LoginSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['department', 'trainee_or_employee', 'employee_code']
+        fields = '__all__'
