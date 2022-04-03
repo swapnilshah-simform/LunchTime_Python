@@ -2,6 +2,12 @@ from django.db.models.signals import post_save, post_delete
 from django.contrib.auth.models import User
 from .models import Profile
 
+from django.core.mail import EmailMultiAlternatives
+from django.dispatch import receiver
+from django.template.loader import render_to_string
+from django.urls import reverse
+
+from django_rest_passwordreset.signals import reset_password_token_created
 
 def createProfile(sender, instance, created, **kwargs):
     if created:

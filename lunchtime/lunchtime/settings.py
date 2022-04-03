@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1g%+e0cb==kr-z=qk&7$=&savu9*xamm!)!m*h490g018c=s39'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'userdetail',
     'canteenInfo',
     'rest_framework',
+    'django_rest_passwordreset',
 ]
-
 
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'lunchtime.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, '/templates/',)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,13 +86,13 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': 'd6inbbo3t22t3k',
+        'NAME': 'd4onrgmrs66loj',
 
-        'USER': 'yrlkyisdwvrjbq',
+        'USER': 'lbitenxaawqgqy',
 
-        'PASSWORD': 'fae3ab7eae93a800c0bbdb2191df5517daf343df562bcb4ca02c6ed3f095e263',
+        'PASSWORD': 'b06c5596e284160dbdb924b70dad7fcad05192ccaf0c1b8a4942e2a59ae57219',
 
-        'HOST': 'ec2-52-3-60-53.compute-1.amazonaws.com',
+        'HOST': 'ec2-52-21-136-176.compute-1.amazonaws.com',
 
         'PORT': '5432',
 
@@ -141,3 +141,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'yadavsunnylunchtime@gmail.com'
+EMAIL_HOST_PASSWORD = 'ggqwaalnfzwmljge'
