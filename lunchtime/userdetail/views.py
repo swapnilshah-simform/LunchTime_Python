@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from .models import Profile
 from rest_framework.views import APIView
+from canteenInfo.models import CanteenInfo
 
 from .serializers import RegisterSerializer, LoginSerializer, ProfileSerializer
 from rest_framework import generics
@@ -51,6 +52,10 @@ def loginUserPage(request):
 def createProfile(request):
     user = User.objects.get(id=request.data.get("pk"))
     profile = Profile.objects.create(user=user, department=request.data.get("department"), trainee_or_employee=request.data.get('trainee_or_employee'))
+    print("Profile Created")
+    info = CanteenInfo.objects.create(profile_id=profile, active_or_not=False)
+    info.save()
+    print("Info saved")
     serializer = ProfileSerializer(profile, data=request.data)
     if serializer.is_valid():
         serializer.save()
