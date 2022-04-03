@@ -41,7 +41,8 @@ def loginUserPage(request):
     try:
         user = User.objects.get(email=email)
         if user.check_password(password):
-            return Response(status=status.HTTP_200_OK)
+            context = {'Response': status.HTTP_200_OK, 'email': user.email, 'username': user.username, 'Id': user.id}
+            return Response(context)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
     except BaseException as e:
