@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status
-
+import json
 from .serializer import MenuSerializer
 from rest_framework.decorators import api_view
 # Create your views here.
@@ -18,23 +18,21 @@ from types import SimpleNamespace
 #     serializer_class = MenuSerializer
 @api_view(["POST"])
 def createMenu(request):
+    # import pdb
+    # pdb.set_trace()
     a = request.data.get("menu")
-    a = a[1:len(a) - 1]
-    d = eval(a)
-    b = 0
-    c = {}
-    for i in d:
-        c[b] = i
-        b += 1
-    z = c[0]
+    z = a
+
+    # print(type(b))
+    # print(b)
     menu_obj = Menu.objects.create(menu=z, latest_date=request.data.get("time"))
-    print(menu_obj)
+    # print(menu_obj)
     serializer = MenuSerializer(menu_obj, data=request.data)
-    print(serializer)
+    # print(serializer)
     if serializer.is_valid():
-        print("IN")
+        # print("IN")
         serializer.save()
-        return Response(c)
+        return Response(serializer.data)
     return Response(serializer.errors)
 
 
